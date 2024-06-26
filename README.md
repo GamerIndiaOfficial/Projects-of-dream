@@ -18,3 +18,5 @@ We are some privacy enthusiastic so don't expect us to tell our real names but y
 You can report the bug directly by this [button](https://github.com/GamerIndiaOfficial/All-Projects/issues/new/choose) or you can go the issues tab and create a new issue **The issue must have the name of the mini game detail description your name a way to contact you and how to reproduce that glitch/bug**
 ## What we do after you report a bug
 After knowing that a bug is being reported we go and read that issue and see if it meet the requirement mentioned above after that we try to reproduce that glitch and if we successfully reproduce the glitch we will immediately try to fix it if we aren't able to reproduce that glitch we try to contact the bug reporter 
+# What about future
+We will try to further improve add more features games etc in our repository and we will update it time-to-time
