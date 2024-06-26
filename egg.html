@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Save the Egg</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #87CEEB, #f7f7f7); /* Sky blue to white gradient */
+    }
+    #gameCanvas {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    #homeScreen, #endScreen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(247, 247, 247, 0.9);
+        overflow: hidden;
+    }
+    #helpText {
+        font-size: 18px;
+        text-align: left;
+        padding: 0 20px;
+        display: none;
+    }
+    @media only screen and (max-width: 600px) {
+        #helpText {
+            display: block;
+        }
+    }
+    #bugForm {
+        display: none;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        width: 90%;
+        max-width: 400px;
+    }
+
+    #bugForm label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    #bugForm input[type="text"],
+    #bugForm input[type="email"],
+    #bugForm textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: rgb(230, 34, 77);
+        border-radius: 5px;
+        box-shadow: rgb(121, 18, 55) 0px 4px 0px 0px;
+        padding: 15px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        box-sizing: border-box;
+        width: 154px;
+        color: #fff;
+        height: auto;
+        border: none;
+        font-size: 20px;
+        transition: all 0.3s ease-in-out;
+        margin: 10px; 
+        z-index: 1;
+        overflow: hidden;
+        position: relative;
+    }
+
+    button::before {
+        content: "";
+        background-color: rgb(248, 50, 93);
+        width: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: width 700ms ease-in-out;
+        display: inline-block;
+    }
+
+    button:hover::before {
+        width: 100%;
+    }
+
+    #helpText:hover {
+        background-color: #f7f7f7;
+    }
+</style>
+</head>
+<body>
+
+<div id="homeScreen">
+    <h1>Welcome to Save the Egg</h1>
+    <button id="startButton">Start Game</button>
+</div>
+
+<canvas id="gameCanvas"></canvas>
+
+<div id="endScreen" style="display: none;">
+    <h1>Game Over!</h1>
+    <p id="finalScore">Your Score: 0</p>
+    <button id="restartButton">Restart</button>
+    <button id="helpButton">Controls</button>
+    <p id="helpText" title="Controls">Controls for PC: Press Spacebar to flap<br>Controls for Mobile: Tap on the screen to flap</p>
+    <button id="bugButton">Report Problem</button>
+    <form id="bugForm">
+        <label for="problem">Describe the problem:</label>
+        <textarea id="problem" name="problem" required></textarea>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email">
+
+        <button type="submit">Report Bug</button>
+        <br>
+    
+    </form>
+</div>
+
+<script>
+    // Game variables
+    let canvas, ctx;
+    let bird, pipes, clouds;
+    let gameInterval, score;
+    let isGameOver;
+    let frameCount = 0;
+
+    // Constants
+    const gravity = 0.2; // Decreased gravity for slower downward movement
+    const jumpStrength = -8; // Decreased jump strength for lower jump height
+    const pipeSpeed = 5;
+    const pipeWidth = 30;
+    const pipeGap = 200;
+    const pipeFrequency = 100;
+
+    // Classes
+    class Bird {
+        constructor() {
+            this.x = 100;
+            this.y = canvas.height / 2;
+            this.velocity = 0;
+            this.width = 30;
+            this.height = 40;
+            this.color = "white";
+        }
+
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.ellipse(this.x + this.width / 2, this.y + this.height / 2, this.width / 2, this.height / 2, 0, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+
+        flap() {
+            this.velocity = jumpStrength;
+        }
+
+        update() {
+            this.velocity += gravity;
+            this.y += this.velocity;
+        }
+
+        checkCollision() {
+            if (this.y > canvas.height || this.y < 0) {
+                gameOver();
+            }
+        }
+    }
+
+    class Pipe {
+        constructor() {
+            this.x = canvas.width;
+            this.width = pipeWidth;
+            this.color = "brown";
+            this.gap = pipeGap;
+            this.heightTop = Math.random() * (canvas.height - this.gap - 100);
+            this.heightBottom = canvas.height - this.heightTop - this.gap;
+        }
+
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.moveTo(this.x, 0);
+            ctx.lineTo(this.x + this.width / 2, this.heightTop);
+            ctx.lineTo(this.x + this.width, 0);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(this.x, canvas.height);
+            ctx.lineTo(this.x + this.width / 2, canvas.height - this.heightBottom);
+            ctx.lineTo(this.x + this.width, canvas.height);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        update() {
+            this.x -= pipeSpeed;
+            if (this.x + this.width < 0) {
+                pipes.shift();
+                score++;
+            }
+            if (
+                bird.y < this.heightTop ||
+                bird.y > canvas.height - this.heightBottom ||
+                (bird.y + bird.height > canvas.height)
+            ) {
+                if (bird.x + bird.width > this.x && bird.x < this.x + this.width) {
+                    gameOver();
+                }
+            }
+        }
+    }
+
+    class Cloud {
+        constructor() {
+            this.x = canvas.width;
+            this.y = Math.random() * canvas.height / 2;
+            this.width = 100 + Math.random() * 100;
+            this.height = this.width / 2;
+            this.speed = 1 + Math.random();
+            this.color = 'rgba(255, 255, 255, 0.8)';
+        }
+
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.ellipse(this.x, this.y, this.width / 2, this.height / 2, 0, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+
+        update() {
+            this.x -= this.speed;
+            if (this.x + this.width < 0) {
+                clouds.shift();
+                clouds.push(new Cloud());
+            }
+        }
+    }
+
+    // Functions
+    function init() {
+        canvas = document.getElementById("gameCanvas");
+        ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        score = 0;
+        isGameOver = false;
+        bird = new Bird();
+        pipes = [];
+        clouds = [new Cloud(), new Cloud(), new Cloud()]; // Start with some clouds
+        gameInterval = setInterval(gameLoop, 1000 / 60);
+        canvas.style.display = "block";
+        document.getElementById("homeScreen").style.display = "none";
+        document.getElementById("endScreen").style.display = "none";
+    }
+
+    function gameLoop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        clouds.forEach(cloud => {
+            cloud.update();
+            cloud.draw();
+        });
+
+        bird.update();
+        bird.draw();
+
+        if (frameCount % pipeFrequency === 0) {
+            pipes.push(new Pipe());
+        }
+
+        pipes.forEach(pipe => {
+            pipe.update();
+            pipe.draw();
+        });
+
+        bird.checkCollision();
+        drawScore();
+        frameCount++;
+    }
+
+    function gameOver() {
+        clearInterval(gameInterval);
+        isGameOver = true;
+        canvas.style.display = "none";
+        document.getElementById("endScreen").style.display = "flex";
+        document.getElementById("finalScore").textContent = "Your Score: " + score;
+    }
+
+    function drawScore() {
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Score: " + score, 20, 40);
+    }
+
+    // Event Listeners
+    document.getElementById("startButton").addEventListener("click", init);
+    document.getElementById("restartButton").addEventListener("click", init);
+    document.getElementById("helpButton").addEventListener("click", toggleHelp);
+    document.getElementById("bugButton").addEventListener("click", toggleBugForm);
+
+    window.addEventListener("keydown", function (event) {
+        if (event.code === "Space" && !isGameOver) {
+            bird.flap();
+        }
+    });
+
+    window.addEventListener("touchend", function (event) {
+        if (!isGameOver && event.target === canvas) {
+            bird.flap();
+            event.preventDefault();
+        }
+    });
+
+    function toggleHelp() {
+        let helpText = document.getElementById("helpText");
+        if (helpText.style.display === "none") {
+            helpText.style.display = "block";
+        } else {
+            helpText.style.display = "none";
+        }
+    }
+
+    function toggleBugForm() {
+        let bugForm = document.getElementById("bugForm");
+        if (bugForm.style.display === "none") {
+            bugForm.style.display = "block";
+        } else {
+            bugForm.style.display = "none";
+        }
+    }
+
+    // Initialize the game
+    init();
+</script>
+
+</body>
+</html>

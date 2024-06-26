@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report Bug</title>
+<style>
+    /* General styles */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form styles */
+    form {
+        margin-top: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    button {
+        background-color: rgb(230, 34, 77);
+        border-radius: 5px;
+        box-shadow: rgb(121, 18, 55) 0px 4px 0px 0px;
+        padding: 15px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        box-sizing: border-box;
+        width: 154px;
+        height: 49px;
+        color: #fff;
+        height: auto;
+        border: none;
+        font-size: 20px;
+        transition: all 0.3s ease-in-out;
+        margin: 10px; 
+        z-index: 1;
+        overflow: hidden;
+        position: relative;
+    }
+
+    button::before {
+        content: "";
+        background-color: rgb(248, 50, 93);
+        width: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: width 700ms ease-in-out;
+        display: inline-block;
+    }
+
+    button:hover::before {
+        width: 100%;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+        .container {
+            padding: 20px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Report a Bug</h1>
+    <form id="reportForm">
+        <label for="problem">Describe the problem:</label>
+        <textarea id="problem" name="problem"  required></textarea>
+
+        <label for="email">Email Address:</label>
+        <input type="email"  id="email" name="email"">
+
+        <button>Report Bug</button>
+        <br>
+        <a href="./egg">Go back</a>
+    </form>
+</div>
+<script>
+    function abc() {
+        confirm("did you fill the form")
+    }
+</script>
+</body>
+</html>
