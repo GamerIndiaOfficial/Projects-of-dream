@@ -1,1 +1,28 @@
+<html>
+  <head>
+    <title>
+      See the colour 
+    </title>
+    <style>
+      div {
+        height: 200px;
+        width: 200px;
+        border: 1px solid #333;
+        transition: all 0.4s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <input type="text" />
+    <script>
+      let box = document.querySelector("div"),
+        input = document.querySelector("input");
 
+      input.addEventListener("input", () => {
+        box.style.borderradius = input.value;
+        box.style.background = input.value;
+      });
+    </script>
+  </body>
+</html>
