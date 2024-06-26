@@ -15,4 +15,4 @@ We are some privacy enthusiastic so don't expect us to tell our real names but y
 # What the users are allowed to
 **Users may not redistribute, sub-licence, rent, publish, sell, assign, lease, market without having exclusive permission from either GamerIndiaOfficial or Harshdevloper123 or both.**
 # How to report a bug
-You can report the bug directly by this [button](https://github.com/GamerIndiaOfficial/All-Projects/issues/new/choose) or you can go the issues tab and create a new issue **The issue must have the name of the mini game details description your name and how to reproduce that glitch/bug**
+You can report the bug directly by this [button](https://github.com/GamerIndiaOfficial/All-Projects/issues/new/choose) or you can go the issues tab and create a new issue **The issue must have the name of the mini game detail description your name and how to reproduce that glitch/bug**
