@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See the Colour</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+      .divcentre {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      div {
+        height: 200px;
+        width: 200px;
+        border: 1px solid #333;
+        transition: all 0.4s ease;
+      }
+      input {
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="divcentre">
+     <h4> Here you can see the colour </h4>
+    <div></div>
+       <p style="font-size:10px;" > Type your colour name or hex value here </p>
+      <input type="text"/>
+      <a href="./" style="font-size:8px;"> Back to home </a>
+    </div>
+    <script>
+      let box = document.querySelector(".divcentre div"),
+        input = document.querySelector("input");
+
+      input.addEventListener("input", () => {
+        box.style.borderRadius = input.value;
+        box.style.background = input.value;
+      });
+    </script>
+  </body>
+</html>
