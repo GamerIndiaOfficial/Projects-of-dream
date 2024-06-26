@@ -12,3 +12,5 @@ We are some privacy enthusiastic so don't expect us to tell our real names but y
 [Harshdevloper123](https://github.com/Harshdevloper123)
 # How you can support us 
 **You can star this repository follow our profiles etc to support us**
+# What the users are allowed to
+**Users may not redistribute, sub-licence, rent, publish, sell, assign, lease, market without having exclusive permission from either GamerIndiaOfficial or Harshdevloper123 or both.**
