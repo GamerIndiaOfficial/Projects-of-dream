@@ -6,8 +6,9 @@ We have thought to make this a website a fully ~~paid and ad full and pay to win
 # Who we are 
 We are two individuals you can call us friend and we have decided to work on this repository
 ## Name of the creators of this repository
-We are some privacy enthusiastic so don't expect us to tell our real names but you can call us from Gamer and Harsh
+We are some privacy enthusiastic so don't expect us to tell our real names but you can call us Gamer and Harsh
 ### Link of GitHub profiles of the creator
 [GamerIndiaOfficial](https://github.com/GamerIndiaOfficial)
 [Harshdevloper123](https://github.com/Harshdevloper123)
 # How you can support us 
+**You can star this repository follow our profiles etc to support us**
