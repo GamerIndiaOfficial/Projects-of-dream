@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generation Identifier</title>
+    <style>
+        h1{
+            text-align: center;
+            color: aqua;
+        }
+        body
+        {
+            background-color: blueviolet;
+        }
+        button
+        {
+            background-color: blueviolet;
+            box-shadow: 1px 1px 0.1px ;
+        }
+        button a {
+            text-decoration: none;
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <h1>Thanks for visiting</h1>
+    <button><a href="./">Back</a></button>
+    <script>
+confirm("Generation Identifier Program");
+let yourage = parseInt(prompt("Which year were you born?")); // Please do not use ABCD or demicals or special characters otherwise code may not work
+confirm("So According to the data you are:-"); // The data is collected from various sources across internet.
+if (yourage >= 1883 && yourage <= 1900) {
+  confirm("Lost Generation");
+} else if (yourage >= 1901 && yourage <= 1927) {
+  confirm("Greatest Generation");
+} else if (yourage >= 1928 && yourage <= 1945) {
+  confirm("Silent Generation");
+} else if (yourage >= 1946 && yourage <= 1964) {
+  confirm("Baby Boomers");
+} else if (yourage >= 1965 && yourage <= 1980) {
+  confirm("Generation X");
+} else if (yourage >= 1981 && yourage <= 1996) {
+  confirm("Millennials");
+} else if (yourage >= 1997 && yourage <= 2012) {
+  confirm("Generation Z");
+} else if (yourage >= 2012 && yourage <= 2023) {
+  confirm("Generation Alpha");
+} else {
+  confirm("No information"); // Currently no information
+}
+ </script>
+</body>
+</html>
