@@ -13,7 +13,7 @@ We are some privacy enthusiastic so don't expect us to tell our real names but y
 # How you can support us 
 **You can star this repository follow our profiles etc to support us**
 # What the users are allowed to
-Please read the license
+This project is registered under MIT License You can see the [License](https://github.com/GamerIndiaOfficial/All-Projects/blob/main/.github/LICENSE) for information  
 # How to report a bug
 You can report the bug directly by this [button](https://github.com/GamerIndiaOfficial/All-Projects/issues/new/choose) or you can go the issues tab and create a new issue **The issue must have the name of the mini game detail description your name a way to contact you and how to reproduce that glitch/bug**
 ## What we do after you report a bug
