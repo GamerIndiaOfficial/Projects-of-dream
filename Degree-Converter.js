@@ -5,7 +5,7 @@ while (true) {
   let preference = prompt("Type here: ").toLowerCase();
   if (preference === "fahrenheit" || preference === "celcius" || preference === "f" || preference === "c") {
     confirm("Okay now which number you want converted");
-    let Number = parseFloat(prompt("Write your number in the format of 0.00: "));
+    let Number = parseFloat(prompt("Type Hear: "));
     if (preference === "fahrenheit" || preference === "f") {
       let answer = Number - 32;
       answer = answer * 5;
