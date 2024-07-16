@@ -22,11 +22,27 @@
             text-decoration: none;
             color: aqua;
         }
+        #center {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: aqua;
+        }
+        #p {
+          display: flex;
+          justify-content: center;
+          align-items: center; 
+        }
     </style>
 </head>
 <body>
     <h1>Thanks for visiting</h1>
+    <div id=center>
     <button><a href="./">Back</a></button>
+    <p style="color: blueviolet">--</p>
+    <button><a href="">Click/Tap to reload</a></button>
+    </div>
+    <p id="p">Make sure your browser support Javascript</p>
     <script>
 confirm("Generation Identifier Program");
 let yourage = parseInt(prompt("Which year were you born?")); // Please do not use ABCD or demicals or special characters otherwise code may not work
