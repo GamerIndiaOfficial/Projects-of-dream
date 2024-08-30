@@ -12,7 +12,7 @@ As repository grows it is immposible to make all the Assests/Elements by myself 
 
 
 1. [Uiverse](https://uiverse.io) - The Largest Library of Open-Source UI (Claim by Uiverse)
-2. [Flaticon](https://flaticon.com) Some Assests are Designed by Freepik from Flaticon - The most wanted free SVG user interface icons (Claim by Flaticon)
+2. [Flaticon](https://flaticon.com) Some Assests are [Designed by Freepik from Flaticon](https://www.flaticon.com/authors/freepik) - The most wanted free SVG user interface icons (Claim by Flaticon)
 ___
 
 ### Additional information
