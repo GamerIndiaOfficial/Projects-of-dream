@@ -1,135 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome!</title>
-    <style>
-        body{
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-        circle farthest-side at 0% 50%,
-        #282828 23.5%,
-        rgba(255, 170, 0, 0) 0
-      )
-      21px 30px,
-    radial-gradient(
-        circle farthest-side at 0% 50%,
-        #2c3539 24%,
-        rgba(240, 166, 17, 0) 0
-      )
-      19px 30px,
-    linear-gradient(
-        #282828 14%,
-        rgba(240, 166, 17, 0) 0,
-        rgba(240, 166, 17, 0) 85%,
-        #282828 0
-      )
-      0 0,
-    linear-gradient(
-        150deg,
-        #282828 24%,
-        #2c3539 0,
-        #2c3539 26%,
-        rgba(240, 166, 17, 0) 0,
-        rgba(240, 166, 17, 0) 74%,
-        #2c3539 0,
-        #2c3539 76%,
-        #282828 0
-      )
-      0 0,
-    linear-gradient(
-        30deg,
-        #282828 24%,
-        #2c3539 0,
-        #2c3539 26%,
-        rgba(240, 166, 17, 0) 0,
-        rgba(240, 166, 17, 0) 74%,
-        #2c3539 0,
-        #2c3539 76%,
-        #282828 0
-      )
-      0 0,
-    linear-gradient(90deg, #2c3539 2%, #282828 0, #282828 98%, #2c3539 0%) 0 0
-      #282828;
-  background-size: 40px 60px;
-        }
-        .container{
-            background-color: pink;
-            height: 200px;
-            width: 250px;
-            margin: 10px;
-            box-shadow: -15px 15px 34px #dcb43c;
-            border-radius: 5%;
-            font-size: 30px;
-            border:2px solid #353535;
-        }
-        #top{
-           text-align: center;
-        }
-        #p {
-            font-size: larger;
-            text-align: center;
-            color: white;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Projects</title>
+  <style>
+    /* CSS for Poppins font */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-        #button-top button a {
-        text-decoration: none;
-        color: green;
-        }     
-        #button-top button{
-            background-color: orange;
-            text-align: center;
-        }   
-        
-        #div{
-           font: 200;
-           font-size: 50px;
-           color: aliceblue;
-        }
-        details{
-          color: white;
-        }
-    </style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      color: white;
+      text-align: center;
+      padding: 20px;
+        width: 100%;
+  height: 100%;
+
+  background: #000000;
+  --gap: 5em;
+  --line: 1px;
+  --color: rgba(255, 255, 255, 0.2);
+
+  background-image: linear-gradient(
+      -90deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    );
+  background-size: var(--gap) var(--gap);
+
+    }
+
+    header {
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .projects-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .project-card {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.5s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .project-description {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .project-link {
+      color: #03a9f4;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.8rem;
+    }
+    #credit{
+      color:#616161;
+      font-size: 10px;
+    }
+  </style>
 </head>
 <body>
-    <section id="top">
-   <div id="div">Welcome! <br></div>
-   <p id="p">These are small projects made by GamerIndiaOfficial and Harshdevloper123</p>
-   <a href="./index2"> <button class="container">Bank balance checking app</button>
-</a> 
-<details>
-    This is a simple bank balance checking app which show your account balance.
-</details>
-<a href="./agefinder"> <button class="container">Age finder</button>
-</a> 
-<details>
-    Age finder is a web app which shows your age
-</details>
-<a href="./calculator"> <button class="container">Calculator</button>
-</a>
-<details>
-    This is one of the best projects on this website it includes light and dark theme with complex css to make it look good
-</details>
-<a href="./colour"> <button class="container">See the colour</button> 
- </a>
-<details> You can see the colour by typing it's hex value or name in the box and it will show how that colour looks 
-</details>
-<a href="./egg"> <button class="container">Save the egg</button></a>
-<details>This is a game inspired by flappy bird
-</details>
-<a href="./Generation-Identifier"> <button class="container">Generation Identifier </button></a>
-<details>This is a simple generation identifier you can use this to find your generation which you belong to</details>
-<a href="./Degree-Converter"> <button class="container">Degree Converter</button></a>
-<details>This is a simple temprature converter this can convert temprature form or to farenheit or celcius</details>
-<a href="./TIC-TAC-TOE"> <button class="container">Tic Tac Toe</button></a>
-<details>This is a simple tic tac toe game and it is only playable by pass & play</details>
-<a href="./CHECKER"> <button class="container">Checkers</button></a>
-<details>This is a simple checker game and it is only playable by pass & play</details>
-</section>
-<div id="button-top">
-   <button> <a href="#top">Go to top</a></button>
-</div>
+  <header>
+    <h1>Projects of Dream</h1>
+    <br>
+    <h4>Repository of Projects</h4>
+    <br>
+  </header>
+
+  <section class="projects-container">
+    <div class="project-card">
+      <h2 class="project-title">Bank balance checking app</h2>
+      <p class="project-description">This is a simple bank balance checking app which show your account balance</p>
+      <a href="./index2" class="project-link">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h2 class="project-title">Age finder</h2>
+      <p class="project-description">Age finder is a web app which shows your age</p>
+      <a href="./agefinder" class="project-link">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h2 class="project-title">Calculator</h2>
+      <p class="project-description">This is one of the best projects on this website it includes light and dark theme with complex css to make it look good</p>
+      <a href="./calculator" class="project-link">View Project</a>
+    </div>
+
+    <div class="project-card">
+        <h2 class="project-title">See the colour</h2>
+        <p class="project-description"> You can see the colour by typing it's hex value or name in the box and it will show how that colour looks</p>
+        <a href="./colour" class="project-link">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <h2 class="project-title">Save the egg</h2>
+        <p class="project-description">This is a game inspired by flappy bird</p>
+        <a href="./egg" class="project-link">View Project</a>
+      </div>
+      <div class="project-card">
+        <h2 class="project-title">Generation Identifier</h2>
+        <p class="project-description">This is a simple generation identifier you can use this to find your generation which you belong to</p>
+        <a href="./Generation-Identifier" class="project-link">View Project</a>
+      </div>
+      <div class="project-card">
+        <h2 class="project-title">Degree Converter</h2>
+        <p class="project-description">This is a simple temprature converter this can convert temprature form or to farenheit or celcius</p>
+        <a href="./Degree-Converter" class="project-link">View Project</a>
+      </div>
+      <div class="project-card">
+        <h2 class="project-title">Tic Tac Toe</h2>
+        <p class="project-description">This is a simple tic tac toe game and it is only playable by pass & play</p>
+        <a href="./TIC-TAC-TOE" class="project-link">View Project</a>
+      </div>
+      <div class="project-card">
+        <h2 class="project-title">Checkers</h2>
+        <p class="project-description">This is a simple checker game and it is only playable by pass & play</p>
+        <a href="./CHECKER" class="project-link">View Project</a>
+      </div>
+      
+    <!-- Add more projects here -->
+  </section>
+  <br>
+  <p id=credit>Some assests/Projects is not created directly by us. So, please check the <a href="https://github.com/GamerIndiaOfficial/Projects-of-dream/blob/main/CREDIT.md" id=credit>CREDIT.md</a><p></p>
+
 </body>
 </html>
