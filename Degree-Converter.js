@@ -1,11 +1,8 @@
 while (true) {
-  confirm("Which you want to convert from?");
   confirm("Fahrenheit or Celcius");
-  confirm("You can also type 'f' and 'c'");
-  let preference = prompt("Type here: ").toLowerCase();
+  let preference = prompt("You may also type 'f' and 'c' ").toLowerCase();
   if (preference === "fahrenheit" || preference === "celcius" || preference === "f" || preference === "c") {
-    confirm("Okay now which number you want converted");
-    let Number = parseFloat(prompt("Type here: "));
+    let Number = parseFloat(prompt("Which number you want to convert?"));
     if (preference === "fahrenheit" || preference === "f") {
       let answer = Number - 32;
       answer = answer * 5;
